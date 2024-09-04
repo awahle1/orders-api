@@ -1,8 +1,9 @@
 package application
 
 import (
-	"net/http"
 	"context"
+	"fmt"
+	"net/http"
 )
 
 type App struct {
@@ -10,8 +11,8 @@ type App struct {
 }
 
 func New() *App {
-	app := &App {
-		router: loadRoutes()
+	app := &App{
+		router: loadRoutes(),
 	}
 
 	return app
@@ -19,11 +20,11 @@ func New() *App {
 
 func (a *App) Start(ctx context.Context) error {
 	server := &http.Server{
-		Addr: ":3000",
+		Addr:    ":3000",
 		Handler: a.router,
 	}
 
-	err := server.ListenAndServer()
+	err := server.ListenAndServe()
 	if err != nil {
 		return fmt.Errorf("failed to start server: %w", err)
 	}

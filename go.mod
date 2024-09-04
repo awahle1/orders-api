@@ -1,4 +1,4 @@
-module github.com/awahle1/orders-api.git
+module github.com/awahle1/orders-api
 
 go 1.21.3
 
